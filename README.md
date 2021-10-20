@@ -1,2 +1,2 @@
 # DiffPass
-##generator i menadżer haseł
+## generator i menadżer haseł
