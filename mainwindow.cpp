@@ -7,9 +7,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    logwindow = new Logwindow();
-    connect(logwindow, &Logwindow::logWindow, this, &MainWindow::show);
-
     passgenwindow = new Passgenwindow();
     connect(passgenwindow, &Passgenwindow::firstWindow, this, &MainWindow::show);
 
@@ -28,8 +25,9 @@ void MainWindow::on_passgen_clicked()
 
 void MainWindow::on_passman_clicked()
 {
-    logwindow->show();
-        this->close();
+    Logwindow logwindow;
+    logwindow.setModal(true);
+    logwindow.exec();
 }
 
 void MainWindow::on_quit_clicked()

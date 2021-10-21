@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include "passgenwindow.h"
-//#include "passmanwindow.h"
 #include "logwindow.h"
 
 QT_BEGIN_NAMESPACE
@@ -18,6 +17,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+    void mySignal(bool isLogged);
+
 private slots:
     void on_quit_clicked();
 
@@ -29,6 +31,9 @@ private:
     Ui::MainWindow *ui;
 
     Passgenwindow *passgenwindow;
-    Logwindow *logwindow;
+
+    Logwindow *login;
+
 };
+
 #endif // MAINWINDOW_H

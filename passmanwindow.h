@@ -18,6 +18,9 @@ public:
 signals:
     void secWindow();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::Passmanwindow *ui;
 };

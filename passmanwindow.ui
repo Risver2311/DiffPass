@@ -13,7 +13,21 @@
   <property name="windowTitle">
    <string>DiffPass</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>180</y>
+      <width>80</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -34,7 +34,5 @@ void Logwindow::on_Loginbutton_clicked()
 
 void Logwindow::on_Exitbutton_clicked()
 {
-    MainWindow *mainWindow = new MainWindow();
-    mainWindow->show();
         this->close();
 }
