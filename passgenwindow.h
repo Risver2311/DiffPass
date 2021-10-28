@@ -23,10 +23,11 @@ private slots:
 
     void on_genpass_clicked();
 
-    void on_saveButton_clicked();
+    void on_copy_clicked();
 
 private:
     Ui::Passgenwindow *ui;
+    QVector<QChar> Generate(int length);
 };
 
 #endif // PASSGENWINDOW_H

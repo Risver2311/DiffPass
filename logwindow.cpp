@@ -36,3 +36,10 @@ void Logwindow::on_Exitbutton_clicked()
 {
         this->close();
 }
+
+void Logwindow::on_Registerbutton_clicked()
+{
+    Registerwindow registerwindow;
+    registerwindow.setModal(true);
+    registerwindow.exec();
+}

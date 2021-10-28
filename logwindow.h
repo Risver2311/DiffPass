@@ -21,6 +21,7 @@ signals:
 private slots:
     void on_Loginbutton_clicked();
     void on_Exitbutton_clicked();
+    void on_Registerbutton_clicked();
 
 private:
     Ui::Logwindow *ui;

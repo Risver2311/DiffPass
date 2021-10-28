@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "passgenwindow.h"
 #include "logwindow.h"
+#include "registerwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

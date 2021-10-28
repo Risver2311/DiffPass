@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,19 +13,22 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     passgenwindow.cpp \
-    passmanwindow.cpp
+    passmanwindow.cpp \
+    registerwindow.cpp
 
 HEADERS += \
     logwindow.h \
     mainwindow.h \
     passgenwindow.h \
-    passmanwindow.h
+    passmanwindow.h \
+    registerwindow.h
 
 FORMS += \
     logwindow.ui \
     mainwindow.ui \
     passgenwindow.ui \
-    passmanwindow.ui
+    passmanwindow.ui \
+    registerwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
