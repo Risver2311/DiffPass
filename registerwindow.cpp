@@ -31,25 +31,47 @@ void Registerwindow::on_Registerbutton_clicked()
         QByteArray password = ui -> lineEdit_password -> text().toUtf8();
         QCryptographicHash *hash = new QCryptographicHash(QCryptographicHash::Md5);
         hash->addData(password);
-
         password = hash->result().toHex();
 
         QSqlQuery qry;
 
-        qry.prepare("INSERT INTO users(username, password)" "VALUES (:username, :password)");
-
+        qry.prepare("SELECT username FROM users WHERE username = :username");
         qry.bindValue(":username", username);
-        qry.bindValue(":password", password);
+
+        bool check = true;
 
         if(qry.exec())
         {
-            QMessageBox::about(this, "Registration", "Registration was successful");
-            this->close();
+            while(qry.next())
+            {
+                QString usernameDB = qry.value("username").toString();
+
+                if(username == usernameDB)
+                {
+                    QMessageBox::about(this, "Username", "Username Already Exist!");
+                    check = false;
+                    break;
+                }
+            }
         }
 
-        else
+        if(check)
         {
-             QMessageBox::about(this, "Registration", "Registration was not successful");
+            qry.prepare("INSERT INTO users(username, password)" "VALUES (:username, :password)");
+            qry.bindValue(":username", username);
+            qry.bindValue(":password", password);
+
+            if(qry.exec())
+            {
+                QMessageBox::about(this, "Registration", "Registration was successful");
+                this->close();
+            }
+
+            else
+            {
+                QMessageBox::about(this, "Registration", "Registration was not successful");
+            }
+
         }
     }
 

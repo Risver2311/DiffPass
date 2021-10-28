@@ -2,6 +2,8 @@
 #define LOGWINDOW_H
 
 #include <QDialog>
+#include <QtSql/QSqlDatabase>
+#include <QSqlQuery>
 
 namespace Ui {
 class Logwindow;
@@ -25,6 +27,7 @@ private slots:
 
 private:
     Ui::Logwindow *ui;
+    QSqlDatabase database;
 };
 
 #endif // LOGWINDOW_H

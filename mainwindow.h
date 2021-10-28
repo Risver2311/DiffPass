@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "passgenwindow.h"
+#include "passmanwindow.h"
 #include "logwindow.h"
 #include "registerwindow.h"
 
@@ -32,9 +33,7 @@ private:
     Ui::MainWindow *ui;
 
     Passgenwindow *passgenwindow;
-
-    Logwindow *login;
-
+    Passmanwindow *passmanwindow;
 };
 
 #endif // MAINWINDOW_H
