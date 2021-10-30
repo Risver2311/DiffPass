@@ -2,6 +2,11 @@
 #define PASSMANWINDOW_H
 
 #include <QMainWindow>
+#include <QDialog>
+#include <QtSql/QSqlDatabase>
+#include <QSqlQueryModel>
+#include <QMessageBox>
+#include <QSqlQuery>
 
 namespace Ui {
 class Passmanwindow;
@@ -15,14 +20,20 @@ public:
     explicit Passmanwindow(QWidget *parent = nullptr);
     ~Passmanwindow();
 
-signals:
-    void secWindow();
+public slots:
+    void recived(QString username);
 
 private slots:
-    void on_pushButton_clicked();
+    void on_AddButton_clicked();
+
+    void on_removeButton_clicked();
 
 private:
     Ui::Passmanwindow *ui;
+
+    QSqlDatabase database;
+    QSqlQueryModel * querymodel;
+    QString base;
 };
 
 #endif // PASSMANWINDOW_H

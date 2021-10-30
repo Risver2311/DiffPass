@@ -19,9 +19,6 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-signals:
-    void mySignal(bool isLogged);
-
 private slots:
     void on_quit_clicked();
 
@@ -34,6 +31,7 @@ private:
 
     Passgenwindow *passgenwindow;
     Passmanwindow *passmanwindow;
+    Logwindow *logwindow;
 };
 
 #endif // MAINWINDOW_H

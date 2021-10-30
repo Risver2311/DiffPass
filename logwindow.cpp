@@ -2,6 +2,7 @@
 #include <QCryptographicHash>
 
 #include "mainwindow.h"
+#include "logwindow.h"
 #include "ui_logwindow.h"
 
 Logwindow::Logwindow(QWidget *parent) :
@@ -18,7 +19,7 @@ Logwindow::~Logwindow()
 
 void Logwindow::on_Loginbutton_clicked()
 {
-    database = QSqlDatabase::addDatabase("QMYSQL", "MyConnect");
+    database = QSqlDatabase::addDatabase("QMYSQL");
     database.setHostName("localhost");
     database.setUserName("root");
     database.setPassword("");
@@ -34,18 +35,13 @@ void Logwindow::on_Loginbutton_clicked()
 
     if(database.open())
     {
-        QSqlQuery qry(QSqlDatabase::database("MyConnect"));
+        QSqlQuery qry;
 
-        qry.prepare(QString("SELECT * FROM users WHERE username = :username AND password = :password"));
+        qry.prepare("SELECT * FROM users WHERE username = :username AND password = :password");
         qry.bindValue(":username", username);
         qry.bindValue(":password", password);
 
-        if(!qry.exec())
-        {
-            QMessageBox::about(this, "Failed", "Query Failed To Execute");
-        }
-
-        else
+        if(qry.exec())
         {
             while(qry.next())
             {
@@ -57,8 +53,7 @@ void Logwindow::on_Loginbutton_clicked()
                     QMessageBox::about(this, "Success", "Login Success");
                     this -> close();
                     Passmanwindow *passmanwindow = new Passmanwindow();
-                    passmanwindow -> show();
-
+                    passmanwindow -> recived(username);
                 }
 
                 else
@@ -67,12 +62,19 @@ void Logwindow::on_Loginbutton_clicked()
                 }
             }
         }
+
+        else
+        {
+            QMessageBox::about(this, "Failed", "Query Failed To Execute");
+        }
     }
 
     else
     {
         QMessageBox::about(this, "Database Failed", "Database Connection Failed");
     }
+
+    database.close();
 }
 
 void Logwindow::on_Exitbutton_clicked()

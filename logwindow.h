@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QtSql/QSqlDatabase>
 #include <QSqlQuery>
+#include "passmanwindow.h"
 
 namespace Ui {
 class Logwindow;
@@ -19,6 +20,7 @@ public:
 
 signals:
     void logWindow();
+    void trasmit_to_passman(QString username);
 
 private slots:
     void on_Loginbutton_clicked();
@@ -27,6 +29,8 @@ private slots:
 
 private:
     Ui::Logwindow *ui;
+
+    Passmanwindow passmanwindow;
     QSqlDatabase database;
 };
 
