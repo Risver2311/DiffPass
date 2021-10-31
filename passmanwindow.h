@@ -28,6 +28,8 @@ private slots:
 
     void on_removeButton_clicked();
 
+    void refresh();
+
 private:
     Ui::Passmanwindow *ui;
 

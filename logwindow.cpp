@@ -1,9 +1,8 @@
+#include "mainwindow.h"
+#include "ui_logwindow.h"
+
 #include <QMessageBox>
 #include <QCryptographicHash>
-
-#include "mainwindow.h"
-#include "logwindow.h"
-#include "ui_logwindow.h"
 
 Logwindow::Logwindow(QWidget *parent) :
     QDialog(parent),
@@ -15,6 +14,7 @@ Logwindow::Logwindow(QWidget *parent) :
 Logwindow::~Logwindow()
 {
     delete ui;
+    database.close();
 }
 
 void Logwindow::on_Loginbutton_clicked()
@@ -73,8 +73,6 @@ void Logwindow::on_Loginbutton_clicked()
     {
         QMessageBox::about(this, "Database Failed", "Database Connection Failed");
     }
-
-    database.close();
 }
 
 void Logwindow::on_Exitbutton_clicked()

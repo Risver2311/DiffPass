@@ -6,10 +6,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    passgenwindow = new Passgenwindow();
-    connect(passgenwindow, &Passgenwindow::firstWindow, this, &MainWindow::show);
-
 }
 
 MainWindow::~MainWindow()
@@ -19,8 +15,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_passgen_clicked()
 {
+    Passgenwindow *passgenwindow = new Passgenwindow();
     passgenwindow->show();
-        this->close();
+    this->close();
 }
 
 void MainWindow::on_passman_clicked()
@@ -34,5 +31,3 @@ void MainWindow::on_quit_clicked()
 {
     QApplication::quit();
 }
-
-

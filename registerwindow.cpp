@@ -1,4 +1,4 @@
-#include "registerwindow.h"
+#include "mainwindow.h"
 #include "ui_registerwindow.h"
 
 #include <QCryptographicHash>
@@ -9,21 +9,21 @@ Registerwindow::Registerwindow(QWidget *parent) :
     ui(new Ui::Registerwindow)
 {
     ui->setupUi(this);
-}
-
-Registerwindow::~Registerwindow()
-{
-    delete ui;
-}
-
-void Registerwindow::on_Registerbutton_clicked()
-{
     database = QSqlDatabase::addDatabase("QMYSQL");
     database.setHostName("localhost");
     database.setUserName("root");
     database.setPassword("");
     database.setDatabaseName("database");
+}
 
+Registerwindow::~Registerwindow()
+{
+    delete ui;
+    database.close();
+}
+
+void Registerwindow::on_Registerbutton_clicked()
+{
     if(database.open())
     {
         QString username = ui -> lineEdit_username -> text();
@@ -97,7 +97,4 @@ void Registerwindow::on_Registerbutton_clicked()
     {
         qDebug() << "Not Connected";
     }
-
-    database.close();
 }
-

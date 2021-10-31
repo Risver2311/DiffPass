@@ -1,4 +1,3 @@
-#include "passmanwindow.h"
 #include "mainwindow.h"
 #include "ui_passmanwindow.h"
 
@@ -11,6 +10,7 @@ Passmanwindow::Passmanwindow(QWidget *parent) :
     ui(new Ui::Passmanwindow)
 {
     ui->setupUi(this);
+
     database = QSqlDatabase::addDatabase("QMYSQL");
     database.setHostName("localhost");
     database.setUserName("root");
@@ -48,7 +48,7 @@ void Passmanwindow::on_AddButton_clicked()
 {
     QString website = ui->lineEdit_website->text();
     QString user = ui->lineEdit_username->text();
-    QString password = ui->lineEdit_username->text();
+    QString password = ui->lineEdit_password->text();
 
     QSqlQuery qry;
     qry.prepare("INSERT INTO "+base+"(website, username, password)" "VALUES(:website, :username, :password)");
@@ -70,17 +70,14 @@ void Passmanwindow::on_AddButton_clicked()
         QMessageBox::about(this, "error", "error");
     }
 
-    QString qBuffer ="SELECT * FROM "+base;
-    querymodel = new QSqlQueryModel();
-    querymodel -> setQuery(qBuffer);
-    ui -> tableView -> setModel(querymodel);
+     refresh();
 }
 
 void Passmanwindow::on_removeButton_clicked()
 {
     QString website = ui->lineEdit_website->text();
     QString username = ui->lineEdit_username->text();
-    QString password = ui->lineEdit_username->text();
+    QString password = ui->lineEdit_password->text();
 
     QSqlQuery qry;
     qry.prepare("DELETE FROM "+base+" WHERE website =:website AND username =:username AND password =:password");
@@ -102,9 +99,13 @@ void Passmanwindow::on_removeButton_clicked()
         QMessageBox::about(this, "error", "error");
     }
 
+    refresh();
+}
+
+void Passmanwindow::refresh()
+{
     QString qBuffer ="SELECT * FROM "+base;
     querymodel = new QSqlQueryModel();
     querymodel -> setQuery(qBuffer);
     ui -> tableView -> setModel(querymodel);
 }
-
