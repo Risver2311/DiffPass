@@ -19,11 +19,17 @@ Logwindow::~Logwindow()
 
 void Logwindow::on_Loginbutton_clicked()
 {
-    database = QSqlDatabase::addDatabase("QMYSQL");
+    /*database = QSqlDatabase::addDatabase("QMYSQL");
     database.setHostName("localhost");
     database.setUserName("root");
     database.setPassword("");
-    database.setDatabaseName("database");
+    database.setDatabaseName("database");*/
+    database = QSqlDatabase::addDatabase("QMYSQL");
+    database.setHostName("remotemysql.com");
+    database.setUserName("F5fMShnnbI");
+    database.setPassword("DBku4mJN3l");
+    database.setDatabaseName("F5fMShnnbI");
+    database.setPort(3306);
 
     QString username = ui->lineEdit_username->text();
     QByteArray password = ui -> lineEdit_password -> text().toUtf8();

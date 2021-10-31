@@ -9,11 +9,17 @@ Registerwindow::Registerwindow(QWidget *parent) :
     ui(new Ui::Registerwindow)
 {
     ui->setupUi(this);
-    database = QSqlDatabase::addDatabase("QMYSQL");
+    /*database = QSqlDatabase::addDatabase("QMYSQL");
     database.setHostName("localhost");
     database.setUserName("root");
     database.setPassword("");
-    database.setDatabaseName("database");
+    database.setDatabaseName("database");*/
+    database = QSqlDatabase::addDatabase("QMYSQL");
+    database.setHostName("remotemysql.com");
+    database.setUserName("F5fMShnnbI");
+    database.setPassword("DBku4mJN3l");
+    database.setDatabaseName("F5fMShnnbI");
+    database.setPort(3306);
 }
 
 Registerwindow::~Registerwindow()
