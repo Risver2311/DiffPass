@@ -2,8 +2,8 @@
 ## generator i menadżer haseł
 
 ### Założenia:
-- generowanie haseł 
+- generowanie losowych haseł 
 - rozbudowana możliwość dopasowania hasła
-- menadżer haseł
+- menadżer haseł(przechowywanie haseł)
 - hasła chronione przez szyfrowanie
-- możliwość utworzenia profilu
+- tworzenie indywidualnej bazy dla użytkownika
